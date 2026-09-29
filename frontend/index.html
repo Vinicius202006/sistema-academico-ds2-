@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Acadêmico DS II</title>
+    <link rel="stylesheet" href="./css/estilo.css">
+    
+    <!-- 
+    Precisa ser carregado antes do controller
+     pois o controller utiliza o model 
+     -->
+    <script
+    src="./js/model/aluno-model.js"
+    defer>
+    </script>
+    
+    <!-- 
+    Carrega a view
+    precisa ser carregada antes do controller
+    pois o controller utiliza o AlunoView 
+    -->
+    <script
+    src="./js/view/aluno-view.js"
+    defer>
+    </script>
+    
+    <!-- 
+    É carregado por ultimo pois depende dos
+     dois arquivos anteriores 
+     -->
+    <script
+    src="./js/controller/aluno-controller.js"
+    defer>
+    </script>
+
+</head>
+<body>
+    <main>
+        <!-- 
+        Identifição principal da página
+         -->
+        <h1>Sistema Acadêmico DS II</h1>
+
+        <!-- 
+        Parágrafo que explica a versão atual do projeto 
+        -->
+         <p>
+            primeira versão do sistema utilizando MVC e JSON.
+         </p>
+
+         <!-- 
+          Orientações para que o aluno abra as ferramentas de desenvolvimento
+          e companhe a execução (nesta versão usamos o prompt para capturar
+          informações e console.log para exibi-las).
+           -->
+         <p>
+            Abra o console do navegador para acompanhar a execução.
+        </p>
+    </main>
+</body>
+</html>

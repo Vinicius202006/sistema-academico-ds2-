@@ -1,0 +1,105 @@
+/* 
+SELETOR UNIVERSAL
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+/* 
+CONFIGURAÇÂO GERAL DA PÁGINA
+*/
+
+body {
+    /* 
+    Remove margin que ja vem colocada pelo navegador
+     */
+    margin: 0;
+
+    /* 
+    Defina altura minima como 100% da tela
+    vh = viewport height
+    vh = altura visivel da janela do navegador
+    */
+    min-height: 100vh;
+
+    /* 
+    Ativa o Flexbox
+    */
+    display: flex;
+
+    /* 
+    Centraliza o conteúdo verticalmente
+    */
+    align-items: center;
+
+    /* 
+    Centraliza o conteúdo horizontalmente
+    */
+    justify-content: center;
+
+    /*
+     Define a fonte utilizada
+      */
+    font-family: arial, sans-serif;
+    
+    /* 
+    Define uma cor de fundo cinza claro para a pagina
+    */
+    background-color: #f4f6f8;
+
+    /*
+    Define a cor padrão dos textos
+    */
+    color: #1f2937;
+}
+    /* 
+    CONTEUDO PRINCIPAL
+    */
+main {
+    /* 
+    Define o tamanho minimo para aparecer em telas
+    em telas pequenas tera no minimo 90% do tamanho
+    em telas grandes no minimo 700px
+    */
+    width:min(90%, 700px);
+
+    /* 
+    Acrescenta um espaço interno de 32px
+    */
+    padding: 32px;
+
+    /* 
+    Arredonda as bordas 
+    */
+    border-radius: 8px;
+
+    /* 
+    Define a cor de fundo principal    
+    */
+    background-color: #ffffff;
+
+    /* 
+    Adiciona sombra ao redor do elemento
+    */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* 
+TITULO PRINCIPAL
+*/
+
+h1 {
+    /* 
+    Remove a margem superior adicionada pelo navegador
+    */
+    margin-top: 0;
+
+    /* 
+    Define a cor do titulo
+    */
+    color: #0f3d66;
+
+
+}
+
