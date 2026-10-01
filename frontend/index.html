@@ -1,62 +1,180 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema Acadêmico DS II</title>
     <link rel="stylesheet" href="./css/estilo.css">
-    
+
     <!-- 
     Precisa ser carregado antes do controller
      pois o controller utiliza o model 
      -->
-    <script
-    src="./js/model/aluno-model.js"
-    defer>
+    <script src="./js/model/aluno-model.js" defer>
     </script>
-    
+
     <!-- 
     Carrega a view
     precisa ser carregada antes do controller
     pois o controller utiliza o AlunoView 
     -->
-    <script
-    src="./js/view/aluno-view.js"
-    defer>
+    <script src="./js/view/aluno-view.js" defer>
     </script>
-    
+
     <!-- 
     É carregado por ultimo pois depende dos
      dois arquivos anteriores 
      -->
-    <script
-    src="./js/controller/aluno-controller.js"
-    defer>
+    <script src="./js/controller/aluno-controller.js" defer>
     </script>
 
 </head>
+
 <body>
-    <main>
+    <main class="container">
         <!-- 
         Identifição principal da página
          -->
         <h1>Sistema Acadêmico DS II</h1>
 
         <!-- 
-        Parágrafo que explica a versão atual do projeto 
+        Seção reservada para o formulário de cadastro
         -->
-         <p>
-            primeira versão do sistema utilizando MVC e JSON.
-         </p>
+        <section class="cartao">
 
-         <!-- 
-          Orientações para que o aluno abra as ferramentas de desenvolvimento
-          e companhe a execução (nesta versão usamos o prompt para capturar
-          informações e console.log para exibi-las).
-           -->
-         <p>
-            Abra o console do navegador para acompanhar a execução.
-        </p>
+            <h2>Cadastro do aluno</h2>
+            <p>
+                Preencha os campos abaixo para cadastrar um aluno.
+            </p>
+
+            <!--
+         Formulário para captção de informações
+        -->
+
+            <form id="form-aluno" novalidate>
+
+                <!-- 
+                Ajuste visual do formulário
+                -->
+                <div class="grade-formulario">
+
+                    <!-- 
+                    Campo destinado ao RA
+                    -->
+                    <div class="campo">
+                        <label for="ra">RA</label>
+                        <input type="text" id="ra" name="ra" placeholder="Exemplo: 2026001" required>
+                    </div>
+
+                    <!-- 
+                    Campo destinado ao nome
+                    -->
+                    <div class="campo">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Nome completo" required>
+                    </div>
+
+                    <!-- 
+                    Campo destinado ao e-mail
+                    -->
+                    <div class="campo">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="aluno@email.com" required>
+                    </div>
+                    <!-- 
+                        Campo destinado ao curso.
+                        -->
+                    <div class="campo">
+                        <label for="curso">Curso</label>
+                        <input type="text" id="curso" name="curso" placeholder="Exemplo: DSM" required>
+                    </div>
+
+                    <!-- 
+                        Campo destinado a turma
+                        -->
+                    <div class="campo">
+                        <label for="turma">Turma</label>
+                        <input type="text" id="turma" name="turma" placeholder="Exemplo 2 DSM" required>
+                    </div>
+                </div>
+
+
+                <!-- 
+                    Botão responsável por enviar o formulário
+                    -->
+                <button type="submit">
+                    Cadastrar aluno
+                </button>
+            </form>
+
+            <!-- 
+            Status 
+            -->
+            <div id="mensagem" class="mensagem" role="status" aria-live="polite">
+            </div>
+        </section>
+
+        <!-- 
+        Cartão para apresentar alunos cadastrados
+        -->
+        <section class="cartao">
+
+            <!-- 
+            Agrupa titulo e contador de alunos
+            -->
+            <div class="titulo-secao">
+
+                <h2>Alunos cadastrados</h2>
+
+                <p id="total-alunos">
+                    Total: 0
+                </p>
+            </div>
+            <!-- 
+            Container que permite rolagem horizontal
+            -->
+            <div class="tabela-responsiva">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>RA</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Curso</th>
+                            <th>Turma</th>
+                            <th>Situação</th>
+                        </tr>
+                    </thead>
+
+                    <!-- 
+                    Recebe e exibe as informações dos alunos
+                    cadastrados
+                    -->
+                    <tbody id="corpo-tabela-alunos">
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 
+        Apresentará os alunos cadastrados em JSON
+        -->
+        <section class="cartao">
+
+            <h2>Representação em JSON</h2>
+            <p>
+                A lista abaixo é atualizada após cada cadastro.
+            </p>
+
+            <!-- 
+        A tag pre preserva espaços, identação e quebras de
+        linha
+        -->
+            <pre id="saida-json">[]</pre>
+        </section>
+        </div>
     </main>
 </body>
 </html>
