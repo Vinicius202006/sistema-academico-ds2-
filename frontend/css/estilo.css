@@ -150,6 +150,10 @@ body {
         background-color: #0b2f50;
     }
 
+    button:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
     /* 
     Área de mensagens
     */
@@ -162,6 +166,11 @@ body {
     /* 
     Classe usada para mensagens de suceseso
     */
+
+    .mensagem.informacao {
+    color: #1d4ed8;
+    }
+
     .mensagem.sucesso {
     color: #166534;
     }
