@@ -4,8 +4,8 @@ Projeto integrador da disciplina Desenvolvimento para Servidores II.
 
 ## Criado por
 
-Nome: Vinicius de Lima Morais
-RA: 2650832423025
+Nome: Vinicius de Lima Morais\
+RA: 2650832423025\
 Turma: 5º Semestre - Sistemas para Internet
 
 ## Instruções para executar o backend
@@ -20,7 +20,7 @@ Turma: 5º Semestre - Sistemas para Internet
 1. Acessar o diretório sistema-academico-ds2/frontend/js/`index.html`
 2. Localizar o index.html
 3. Clicar com o botão direito em cima do arquivo index.html
-4. Selecionar a opção **open with live server**
+4. Selecionar a opção **open with live server**\
 **Reitero, se você não tiver, a necessidade da instalação da extensão Live Server**
 
 ## Relação dos endpoints disponíveis
@@ -45,7 +45,8 @@ http://localhost:3000
 - **Cadastrar aluno:** `POST http://localhost:3000/api/alunos`
 - **Verificar servidor:** `GET http://localhost:3000/api/health`
 
-## As principais evidências do projeto estão salvas em imagens na pasta sistema-academico-ds2/docs com o resumo da evidência no título.
+## Evidências 
+As principais evidências do projeto estão salvas em imagens na pasta sistema-academico-ds2/docs com o resumo da evidência no título.
 
 ## Objetivo do projeto
 
