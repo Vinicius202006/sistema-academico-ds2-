@@ -15,6 +15,15 @@
     </script>
 
     <!-- 
+    Carrega o service
+    que vem logo após o model
+
+    Ela é carregada antes do controller
+    porque o controller utilizará o alunoview
+    -->
+    <script src="./js/service/aluno-service.js" defer>
+    </script>
+    <!-- 
     Carrega a view
     precisa ser carregada antes do controller
     pois o controller utiliza o AlunoView 
@@ -81,40 +90,53 @@
                     <div class="campo">
                         <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" placeholder="aluno@email.com" required>
-                    </div>
-                    <!-- 
+                        </div>
+                        <!-- 
                         Campo destinado ao curso.
                         -->
-                    <div class="campo">
-                        <label for="curso">Curso</label>
-                        <input type="text" id="curso" name="curso" placeholder="Exemplo: DSM" required>
-                    </div>
+                        <div class="campo">
+                            <label for="curso">Curso</label>
+                            <input type="text" id="curso" name="curso" placeholder="Exemplo: DSM" required>
+                        </div>
 
-                    <!-- 
+                        <!-- 
                         Campo destinado a turma
                         -->
-                    <div class="campo">
-                        <label for="turma">Turma</label>
-                        <input type="text" id="turma" name="turma" placeholder="Exemplo 2 DSM" required>
-                    </div>
-                </div>
+                        <div class="campo">
+                            <label for="turma">Turma</label>
+                            <input type="text" id="turma" name="turma" placeholder="Exemplo 2 DSM" required>
+                        </div>
+                        </div>
+                    
 
-
-                <!-- 
+                    <!-- 
                     Botão responsável por enviar o formulário
                     -->
-                <button type="submit">
-                    Cadastrar aluno
-                </button>
+                    <div class="acoes-formulario">
+                        <button type="submit">
+                            Cadastrar aluno
+                        </button>
+                        <button 
+                        type="button"
+                        id="btn-limpar-dados"
+                        class="botao-secundario">
+                            Limpar dados
+                        </button>
+                    </div>
             </form>
-
+        
             <!-- 
             Status 
             -->
-            <div id="mensagem" class="mensagem" role="status" aria-live="polite">
+            <div 
+            id="mensagem" 
+            class="mensagem" 
+            role="status" 
+            aria-live="polite"
+            > 
             </div>
         </section>
-
+        
         <!-- 
         Cartão para apresentar alunos cadastrados
         -->
@@ -164,17 +186,18 @@
         <section class="cartao">
 
             <h2>Representação em JSON</h2>
-            <p>
-                A lista abaixo é atualizada após cada cadastro.
-            </p>
-
-            <!-- 
+        <p>
+            A lista abaixo é atualizada após cada cadastro.
+        </p>
+        
+        <!-- 
         A tag pre preserva espaços, identação e quebras de
         linha
         -->
-            <pre id="saida-json">[]</pre>
+        <pre id="saida-json">[]</pre>
         </section>
         </div>
     </main>
 </body>
+
 </html>

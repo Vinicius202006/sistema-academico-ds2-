@@ -1,11 +1,7 @@
 // Criando aluno Model
 const AlunoModel = {
-    // Array que armazena temporariamente os alunos
-
-    alunos: [],
 
     // Padroniza valor textual antes de usa-lo
-
     normalizarTexto(valor) {
         if (valor === null || valor === undefined) {
             return "";
@@ -20,22 +16,40 @@ const AlunoModel = {
     },
 
     // Localiza RA
-    localizarPorRa(ra) {
-        return AlunoModel.alunos.find(
-            aluno => aluno.ra === ra
+        localizarPorRa(alunos, ra) {
+    return alunos.find(
+        aluno => aluno.ra === ra
+    );
+},
+
+    // Calcula proximo identificador(se não houver nenhum cadastrado o primeiro id será 1)
+    gerarProximoId(alunos) {
+        if (alunos.length === 0) {
+            return 1;
+        }
+    
+        //Cria um array contendo somente os IDs
+        const ids = alunos.map(
+            aluno => aluno.id
         );
+
+        // MathMax encontra o maior ID
+        //Spread entrega cada numero do array como argumento para o mathmax
+        const maiorId = Math.max(...ids);
+
+        return maiorId + 1;
     },
 
     // Cadastrar dados
 
-    cadastrar(dados) {
+    criar(dados, alunos) {
         const ra = AlunoModel.normalizarTexto(dados.ra);
         const nome = AlunoModel.normalizarTexto(dados.nome);
         const email = AlunoModel.normalizarTexto(dados.email);
         const curso = AlunoModel.normalizarTexto(dados.curso);
         const turma = AlunoModel.normalizarTexto(dados.turma);
 
-        //verifica campo vazio
+        //verifica campos obrigatórios
         if (
             ra === "" ||
             nome === "" ||
@@ -57,17 +71,16 @@ const AlunoModel = {
             };
         }
         // Verifica se RA não se repete(de outro aluno)
-        if (AlunoModel.localizarPorRa(ra)) {
-            return {
-                sucesso: false,
-                mensagem: "Já existe um aluno com esse RA."
-            };
-        }
+        if (AlunoModel.localizarPorRa(alunos, ra)) {
+    return {
+        sucesso: false,
+        mensagem: "Já existe um aluno com esse RA."
+    };
+}
 
         // Objeto representante do Aluno
         const aluno = {
-            id: AlunoModel.alunos.length + 1,
-
+            id: AlunoModel.gerarProximoId(alunos),
             ra: ra,
             nome: nome,
             email: email,
@@ -76,25 +89,12 @@ const AlunoModel = {
 
             // Todo aluno começa como ativo
             ativo: true
-            // 
         };
-        // A partir desse momento o aluno faz parte dos dados assegurados no model
-        AlunoModel.alunos.push(aluno);
-
-        //Informa que o cadastro foi concluido
-
-        //Devolve o aluno criado para que o controller o mande para o view
+        // Devolve o objeto para a camada service
+        //O model não utiliza push nem local storage
         return {
             sucesso: true,
             aluno: aluno
         };
-    },
-
-    //Devolve a lista de alunos cadastrados
-
-    //spead(...) cria um novo array contendo os mesmos alunos para não precisarmos
-    //devolvermos o array original armazenado no model
-    listar() {
-        return [...AlunoModel.alunos];
     }
 };

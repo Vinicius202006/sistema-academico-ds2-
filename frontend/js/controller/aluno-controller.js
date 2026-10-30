@@ -1,4 +1,3 @@
-//Atualizando o controller
 const AlunoController = {
     // Método que inicia o funcionamento da aplicação
     // Inicia o processo de cadastro
@@ -15,6 +14,13 @@ const AlunoController = {
                 AlunoController.cadastrar(dados);
             }
         );
+
+        // Configura o botão de limpeza
+        AlunoView.configurarBotaoLimparDados(
+            function() {
+                AlunoController.limparDados();
+            }
+        );
         
         // Apresenta o estado inicial da aplicação
         AlunoController.atualizarVisualizacao();
@@ -23,8 +29,8 @@ const AlunoController = {
     // Coordena o cadastro de um aluno.
     cadastrar(dados){
 
-        //Envia os daos para o model
-        const resultado = AlunoModel.cadastrar(dados);
+        //Envia os dados para o model
+        const resultado = AlunoService.cadastrar(dados);
 
         // Se o model indentificar algum problema 
         //ele apresenta o erro e encerra este método
@@ -44,13 +50,41 @@ const AlunoController = {
         AlunoController.atualizarVisualizacao();
         },
 
+        // Coordena a remoção de todos os dados.
+        limparDados() {
+            const alunos = AlunoService.listar();
+            if (alunos.length === 0) {
+                AlunoView.exibirErro(
+                    "Não existem alunos para remover."
+                );
+
+                return;
+            }
+
+            // Solicita confirmação à view
+            const confirmou = AlunoView.confirmarLimpeza();
+
+            if(!confirmou) {
+                return;
+            }
+
+            // Solicita que o service remova os dados
+            AlunoService.limpar();
+
+            AlunoView.exibirSucesso(
+                "Todos os alunos foram removidos."
+            );
+
+            AlunoController.atualizarVisualizacao();
+        },
+
         // Atualiza todas as representações da lista de alunos;
             atualizarVisualizacao(){
                 //Solicita ao model a lista atual
-                const alunos = AlunoModel.listar();
+                const alunos = AlunoService.listar();
 
                 //Solicita que a view monte a tabela
-                AlunoView.exibirLista(alunos);
+                AlunoView.exibirAlunos(alunos);
 
                 //Converte o array para texto JSON formatado.
                 const textoJson = JSON.stringify(alunos, null, 2);

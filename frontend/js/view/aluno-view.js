@@ -32,14 +32,16 @@ const AlunoView = {
         AlunoView.elementos.corpoTabela = 
             document.getElementById("corpo-tabela-alunos");
 
-        AlunoView.elementos.corpoTabela =
-            document.getElementById("corpo-tabela-alunos");
-
         AlunoView.elementos.totalAlunos =
             document.getElementById("total-alunos");
 
         AlunoView.elementos.saidaJson =
             document.getElementById("saida-json");
+            
+            // NOVA REFERÊNCIA DA VERSÃO 03
+            
+            AlunoView.elementos.botaoLimpar = 
+            document.getElementById("btn-limpar-dados");
 
         },
 
@@ -61,7 +63,21 @@ const AlunoView = {
                 }
             );
         },
-    
+
+        // Configura o evento click do botão limpar dados
+        configurarBotaoLimparDados(aoLimpar) {
+            AlunoView.elementos.botaoLimpar.addEventListener(
+                "click",
+                function() {
+                    aoLimpar();
+                }
+            );
+        },
+    confirmarLimpeza() {
+    return confirm(
+        "Deseja remover todos os alunos cadastrados?"
+    );
+},
     // A view coleta somente valores
     // Le as propriedades value de cada campo:
     lerDados() {
@@ -100,7 +116,7 @@ exibirErro(mensagem) {
     },
 
 // Apresenta a lista de alunos na tabela
-exibirLista(alunos) {
+exibirAlunos(alunos) {
 const corpoTabela = AlunoView.elementos.corpoTabela;
 
 // Remove as linhas apresentandas anteriormente 
