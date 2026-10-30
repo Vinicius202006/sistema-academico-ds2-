@@ -43,6 +43,9 @@ const AlunoView = {
             AlunoView.elementos.botaoSalvar = 
             document.getElementById("botao-salvar");
 
+            AlunoView.elementos.botaoLimpar =
+    document.getElementById("btn-limpar-dados");
+
         },
 
         // Regisra uma função que será executada quando o 
@@ -54,6 +57,15 @@ const AlunoView = {
                 aoEnviar
             );
         },
+        
+        // Registra uma função que será executada ao clicar em limpar
+        configurarBotaoLimpar(aoClicar) {
+            AlunoView.elementos.botaoLimpar.addEventListener(
+                "click",
+                aoClicar
+            );
+        },
+        
     // A view coleta somente valores
     // Le as propriedades value de cada campo:
     lerDados() {

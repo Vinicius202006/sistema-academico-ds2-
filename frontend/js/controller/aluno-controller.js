@@ -13,12 +13,17 @@ const AlunoController = {
                 AlunoController.cadastrar
         );
 
+        // Configura o botão para limpar os campos do formulário
+        AlunoView.configurarBotaoLimpar(
+            AlunoController.limparFormulario
+        );
+
         // Informa que os dados estão sendo carregandos
         AlunoView.exibirMensagem(
             "Carregando alunos...",
             "informacao"
         );
-
+        
         try {
             // Consulta os alunos existentes no servidor
             await AlunoController.atualizarVisualizacao();
@@ -95,7 +100,15 @@ const AlunoController = {
             AlunoView.alterarEstadoFormulario(false);
         }
     },
+        // Limpa os campos do formulário
+    limparFormulario() {
+        AlunoView.limparFormulario();
 
+        AlunoView.exibirMensagem(
+            "Campos limpos com sucesso.",
+            "informacao"
+        );
+    },
     // Consulta os alunos na api e atualiza a view
     async atualizarVisualizacao() {
     // Aguarda o service consultar o backend
